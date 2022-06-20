@@ -128,6 +128,7 @@ Vagrant.configure("2") do |config|
     cfg.vm.provision "shell", path: "scripts/fix-second-network.ps1", privileged: true, args: "-ip 192.168.56.103 -dns 8.8.8.8 -gateway 192.168.56.1" 
     cfg.vm.provision "shell", path: "scripts/provision.ps1", privileged: false
     cfg.vm.provision "reload"
+    cfg.vm.provision "shell", inline: "Start-Sleep -s 20"
     cfg.vm.provision "shell", path: "scripts/provision.ps1", privileged: false
     cfg.vm.provision "shell", path: "scripts/download_palantir_wef.ps1", privileged: false
     cfg.vm.provision "shell", inline: 'wevtutil el | Select-String -notmatch "Microsoft-Windows-LiveId" | Foreach-Object {wevtutil cl "$_"}', privileged: false
@@ -191,6 +192,7 @@ Vagrant.configure("2") do |config|
     cfg.vm.provision "shell", path: "scripts/fix-second-network.ps1", privileged: false, args: "-ip 192.168.56.104 -dns 8.8.8.8 -gateway 192.168.56.1" 
     cfg.vm.provision "shell", path: "scripts/MakeWindows10GreatAgain.ps1", privileged: false
     cfg.vm.provision "shell", path: "scripts/provision.ps1", privileged: false
+    cfg.vm.provision "shell", inline: "Start-Sleep -s 20"
     cfg.vm.provision "reload"
     cfg.vm.provision "shell", path: "scripts/provision.ps1", privileged: false
     cfg.vm.provision "shell", path: "scripts/download_palantir_wef.ps1", privileged: false
